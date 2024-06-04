@@ -1,0 +1,16 @@
+# Info: Run a Synology DSM as a Docker Container!
+# Test Status: Non-Tested
+
+services:
+  dsm:
+    container_name: dsm
+    image: vdsm/virtual-dsm
+    environment:
+      - SERVICE_FQDN_DSM_5000
+      - DISK_SIZE=16G
+      - DISK_FMT=qcow2
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - dsm-storage:/storage
+    stop_grace_period: 2m
