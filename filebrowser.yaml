@@ -1,0 +1,13 @@
+# Info: Run filebrowser with Coolify!
+# Test Status: Tested
+
+services:
+  filebrowser:
+    image: hurlenko/filebrowser
+    environment:
+      - SERVICE_FQDN_FILEBROWSER_8080
+      - FB_BASEURL=/filebrowser
+    volumes:
+      - 'data:/data'
+      - 'config:/config'
+    restart: always
