@@ -1,0 +1,24 @@
+# Info: Run a Duplicati Instances to backup Docker Volumes!
+# Test Status: Tested
+
+services:
+  duplicati:
+    image: 'lscr.io/linuxserver/duplicati:latest'
+    environment:
+      - SERVICE_FQDN_DUPLICATI_8200
+      - PUID=0
+      - PGID=0
+      - TZ=Europe/Madrid
+    volumes:
+      - 'duplicati-config:/config'
+      - 'duplicati-backups:/backups'
+      - '/var/lib/docker/volumes:/source/volumes:ro'
+    healthcheck:
+      test:
+        - CMD
+        - curl
+        - '-f'
+        - 'http://127.0.0.1:8200'
+      interval: 2s
+      timeout: 10s
+      retries: 15
