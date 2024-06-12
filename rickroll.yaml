@@ -1,0 +1,11 @@
+# Info: Run a rickroll subdomain with Coolify!
+# Test Status: Tested
+
+services:
+  rickroll:
+    image: modem7/docker-rickroll
+    container_name: Rickroll
+    environment:
+      - SERVICE_FQDN_RICKROLL_8080
+    environment:
+      - TITLE="Rickroll" # Changes the title of the webpage
