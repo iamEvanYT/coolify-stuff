@@ -1,0 +1,13 @@
+# Info: Run Portainer Community Edition with Coolify!
+# Test Status: Tested
+
+services:
+  portainer:
+    image: 'portainer/portainer-ce:latest'
+    container_name: portainer
+    restart: always
+    environment:
+      - SERVICE_FQDN_PORTAINER_9000
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock'
+      - 'portainer_data:/data'
