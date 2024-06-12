@@ -1,0 +1,12 @@
+# Info: Run Nginx Proxy Manager with Coolify!
+# Test Status: Tested
+
+services:
+  app:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    environment:
+      - SERVICE_FQDN_NGINX_81
+    volumes:
+      - manager-data:/data
+      - letsencrypt:/etc/letsencrypt
