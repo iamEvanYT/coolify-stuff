@@ -1,8 +1,0 @@
-# Info: Run a supermario subdomain with Coolify!
-# Test Status: Tested
-
-services:
-  supermario:
-    image: pengbai/docker-supermario
-    environment:
-      - SERVICE_FQDN_SUPERMARIO_8080
