@@ -7,5 +7,4 @@ services:
     container_name: Rickroll
     environment:
       - SERVICE_FQDN_RICKROLL_8080
-    environment:
       - TITLE="Rickroll" # Changes the title of the webpage
