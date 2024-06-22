@@ -9,6 +9,6 @@ With this script, you can change your dashboard port. <br>
 Source: https://github.com/iamEvanYT/coolify-stuff/blob/main/scripts/change-port.sh
 
 Command:
-```bash
+```sh
 wget -q https://raw.githubusercontent.com/iamEvanYT/coolify-stuff/main/scripts/change-port.sh; bash change-port.sh; rm change-port.sh
 ```
