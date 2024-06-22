@@ -33,12 +33,13 @@ if [[ -z $port ]]; then
     port=8000
 fi
 
-echo -e "\nRestarting Coolify by running installation script...\n\n"
+echo -e "\nRestarting Coolify by running installation script...\n"
 
 sleep 1
 
 curl -fsSL https://cdn.coollabs.io/coolify/install.sh | bash
 
-echo -e "\n\n-------------"
+echo -e "\n-------------"
+echo "Ignore the link shown above, use the link below."
 echo "Visit http://$(curl -4s https://ifconfig.io):$port to get started."
 echo "Make sure that port above is not blocked by your firewall, and if you're hosting at home, make sure it is port forwarded."
