@@ -29,4 +29,13 @@ else
     echo "Removed APP_PORT from $env_file."
 fi
 
-curl -fsSL https://cdn.coollabs.io/coolify/install.sh | bash 
+if [[ -z $port ]]; then
+    port=8000
+fi
+
+echo -e "\nRestarting Coolify..."
+
+curl -fsSL https://cdn.coollabs.io/coolify/install.sh | bash > /dev/null 2>&1
+
+echo -e "\nCongratulations! Your Coolify instance is ready to use.\n"
+echo "Please visit http://$(curl -4s https://ifconfig.io):$port to get started."
