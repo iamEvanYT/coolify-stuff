@@ -1,0 +1,47 @@
+# Info: Run a searxng server on Coolify! (https://github.com/searxng/searxng)
+# Test Status: Non-Tested
+
+services:
+  redis:
+    container_name: redis
+    image: docker.io/valkey/valkey:7-alpine
+    command: valkey-server --save 30 1 --loglevel warning
+    restart: unless-stopped
+    networks:
+      - searxng
+    volumes:
+      - valkey-data2:/data
+    cap_drop:
+      - ALL
+    cap_add:
+      - SETGID
+      - SETUID
+      - DAC_OVERRIDE
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
+        max-file: "1"
+
+  searxng:
+    container_name: searxng
+    image: docker.io/searxng/searxng:latest
+    restart: unless-stopped
+    networks:
+      - searxng
+    volumes:
+      - ./searxng:/etc/searxng:rw
+    environment:
+      - SERVICE_FQDN_SEARXNG_8080
+      - SEARXNG_BASE_URL=${SERVICE_FQDN_SEARXNG_8080}
+    cap_drop:
+      - ALL
+    cap_add:
+      - CHOWN
+      - SETGID
+      - SETUID
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
+        max-file: "1"
